@@ -1,0 +1,36 @@
+.esconder{
+    display: none;
+}
+
+.centralizar{
+    text-align:center;
+}
+/*#forms{*/
+	/*width: 320px;*/
+	/*background-color:#fff;*/
+	/*float:left;*/
+	/*line-height:1;*/
+	/*font-size:62.5%;*/
+/*}*/
+
+/*#conteudo {*/
+	/*margin-left: 10px;*/
+    /*float:left;*/
+    /*width:65%;*/
+	/*height:874px;*/
+    /*background:#111;*/
+/*}*/
+/*#opcao {*/
+	/*margin-left: 10px;*/
+    /*float:right;*/
+    /*width:300px;*/
+	/*background:#fff;*/
+	/*height:874px;*/
+
+/*}*/
+
+/*#cop {*/
+	/*clear:both;*/
+	/*padding-top:10px;*/
+	/*text-align:center;*/
+/*}*/

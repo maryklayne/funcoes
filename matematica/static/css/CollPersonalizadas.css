@@ -1,0 +1,55 @@
+#put{
+  background-color: white;
+}
+
+#separa{
+  margin-left: -15px;
+  background:#E6E6FA;
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  margin-left: -4px;
+
+}
+
+.container{
+  background-color: #6495ED	;
+  margin-left: -2px;
+  position: absolute;
+
+}
+
+#navbar-main{
+  background-color: #6495ED	;
+
+}
+
+.navbar-brand{
+  font-size: x-large;
+  color: red;
+}
+
+.alert{
+  position:absolute;
+  left:1200px;
+  top:60px;
+  /*z-index:-1*/
+}
+
+/*#resultado{*/
+  /*margin-left:0px;*/
+  /*background-color: #000;*/
+  /*border-top-style: groove;*/
+  /*border-right-style: groove;*/
+  /*border-bottom-style: groove;*/
+  /*border-left-style: groove;*/
+  /*border-width:1px;*/
+/*}*/
+
+/*.dashboard-panel-6 {*/
+   /*width: 74.5%;*/
+/*}*/
+
+

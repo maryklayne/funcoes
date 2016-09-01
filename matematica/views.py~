@@ -1,0 +1,157 @@
+# -*- coding: utf-8 -*-
+from django.shortcuts import render
+from django.http.response import HttpResponse
+import sympy
+import json
+import re
+from sympy import *
+
+x = Symbol('x')
+y = Symbol('y')
+
+def home(request):
+    return render(request, 'index.html')
+
+def funcao1(request):
+	campo1 = request.POST["funcao"]
+
+	#IntersecXptMaxAndMin
+	intx = intersecX(campo1)
+
+	#IntersecY
+	inty = intersecY(campo1)
+
+	#converter de unicode para sympify
+	campo1 = sympify(campo1)
+	# funcaoUnicode = sympify(campo1)
+
+	#Pontos Crítico
+	pontCritico = pontosCritico(campo1)
+
+	#Maximo e Minimo
+	maxEmin = ptMaxAndMin(campo1, pontCritico)
+
+	#Pont wde Inflexao
+	pontInflx = pontInflexao(campo1)
+	print 'dfdsf ', maxEmin
+	print 'IntersecX ' , str(intx)
+	print 'IntersecY ', str(inty)
+	print 'ptnCritico ', str(pontCritico)[2:-2]
+	print 'min ',str(maxEmin[0])[2:-2]
+	print 'max ',str(maxEmin[1])[2:-2]
+	print 'pontInfl ',str(pontInflx)[2:-2]
+
+	dados = json.dumps({'IntersecX':str(intx), 'IntersecY':str(inty),
+						'ptnCritico': str(pontCritico)[1:-1], 'min':str(maxEmin[0])[1:-1],
+						'max':str(maxEmin[1])[1:-1], 'pontInfl':str(pontInflx)[2:-2]})
+
+	return HttpResponse(dados, content_type='application/json') #retornar lista
+
+#Cálculo dos pontos de intersecção da funcao com o eixo x
+def intersecX(funcao):
+	retorno = []
+	try:
+		raizes = solve(funcao, x)
+	except:
+		raizes = []
+
+	if raizes:
+		i = 0
+		while i < len(raizes):
+			pontos = (i, sympify(funcao).subs(x, i))
+			retorno.append(pontos)
+			i=i+1
+		retorno = str(retorno)[1:-1]
+	else:
+		retorno.append('nao possui intX')
+
+	return retorno
+
+#Cálculo dos pontos de intersecção da funcao com o eixo y
+def intersecY(funcao):
+	resolv = sympify(funcao).subs(x,0)
+	resolv = '(0, ' + str(resolv) + ')'
+	return resolv
+
+#Cálculo da derivada de uma função
+def calcDerivada(funcao):
+	return funcao.diff(x)
+
+#Cálculo das raízes da derivada ou seja, iguala f'(x) a 0
+def raizesDerivada(dx):
+	try:
+		return solve(dx, x)
+	except:
+		return []
+
+#Cálculo dos pontos críticos
+def pontosCritico(f):
+	retorno = []
+	dx  = calcDerivada(f) #1ª derivada
+
+	raizes = raizesDerivada(dx) #raizes da 1ª derivada
+
+	if raizes: #Se tiver raizes, então tem pontos críticos
+		i = 0
+		while i < len(raizes):
+			pontos = (raizes[i], f.subs(x, raizes[i])) #tupla de coordenada do ponto (x,y)
+			retorno.append(pontos)
+			i=i+1
+	else: #Se não tiver pontos críticos
+		retorno.append('nao possui pontCritico')
+	return retorno
+
+#Cálculo dos pontos máximos e mínimos da função
+def ptMaxAndMin(funcao, listaDePontosCriticos): #todos mínimos e máximos são pontos críticos
+	resMin = []
+	resMax = []
+
+	if listaDePontosCriticos[0]!='nao possui pontCritico':
+		for i in listaDePontosCriticos:
+			print 'este ',resMin
+			if i[0] > 0: #Se  a coordenada x do ponto crítico for maior que 0, então é mínimo
+				resMin.append(i)
+			elif i[0] < 0: #Se  a coordenada x do ponto crítico for menos que 0, então é máximo
+				resMax.append(i)
+			else: #Se  a coordenada x do ponto crítico for igual a 0, então é sela
+				'o ponto é sela'
+
+	if not resMin:
+		resMin.append('n possui minimo')
+	if not resMax:
+		resMax.append('n possui maximo')
+
+	return  (resMin,resMax)
+
+def pontInflexao(funcao):
+	retorno = []
+	dx2 = calcDerivada(calcDerivada(funcao)) #2ª derivada
+	raizes = raizesDerivada(dx2) #raizes da 1ª derivada
+	print raizes
+	if raizes:
+		i = 0
+		while i < len(raizes):
+			pontos = (raizes[i], funcao.subs(x, raizes[i]))
+			retorno.append(pontos)
+			i=i+1
+	else:
+		retorno = ['n possue pont de inflexao']
+	return retorno
+
+
+
+# def asssintotaV(funcao, dominio):
+# 	limE = limit(funcao,x,dominio,'-')
+# 	limD = limit(funcao,x,dominio,'+')
+# 	if ((limE == oo and limD == -oo) or (limE == -oo and limD == oo))
+# 		print 'assintota vertical', # resp (dominio, 0)
+# 	print 'sem assintota vertical'
+
+#def asssintotaH(funcao):
+#	lim1 = limit(funcao,x,oo)
+#	lim2 = limit(funcao,x,-oo)
+#	if (lim1 == lim2):
+#		print lim1
+#	print 'nao existe assintota horizontal'
+	
+

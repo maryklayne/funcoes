@@ -1,0 +1,455 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset= "UTF-8"/>
+    <title>Math@Cpt</title>
+    
+    <!-- Importes do menu com abas -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estiloMenuAbas.css'%} " />
+
+    <script type="text/javascript" src="{% static 'js/javascriptMenuAbas.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/javascriptMenuAbas.js' %}"></script>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script> <!--ESSE ARQUIVO TEM QUE SER LOCAL!!! -->
+  	<script src="{% static 'js/jquery2.min.js' %}"></script><!--ESSE ARQUIVO TEM QUE SER LOCAL!!! oq eles fazem -->
+    
+    
+	<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'js/funcoesDominio.js' %}"></script>
+	<script src="{% static 'js/menu.js' %}"></script>
+	<script src="{% static 'js/funcoesEixoX.js' %}"></script>
+	
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"><!--Importando o Boot-->
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fotos.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/CollPersonalizadas.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}"/>
+
+</head>
+
+<body>
+
+
+	<div class="container-fluid">	
+
+
+		<nav class="navbar navbar-default navbar-fixed-top" id="idnav"> <!--cabeçalho-->
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href = "#">Math@Cpt</a>
+				</div>
+
+			<div id="navbar-main" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#">Homes</a>
+					</li>
+			
+					<li>
+						<a href="#">Projeto</a>
+					</li>
+
+					<li>
+						<a href="#">Contato</a>
+					</li>
+
+				</ul>
+
+			</div><!-- navbar-main -->
+        </div><!-- container -->
+		
+		</nav> <!-- Fecha o "navbar navbar-default navbar-fixed-top"-->
+
+		<div class="row">
+
+			<div class="col-md-3" id= "put">
+                
+                <div id="separa"></div>
+                <div id="funcoes"> <!--conteudo -->
+
+
+
+                    <div id="funcao1">
+
+                        <div id="divs">
+
+                            <div id="div1" class="form-group">
+                                <label class="control-label">Digite a função f(x):</label>
+                                <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
+
+                                <div class="controls">
+                                    <input class="campoTxt form-control" type="text" id="campo1" name="funcao" placeholder="função" >
+                                    <!--<span class="help-block">Woohoo!</span>-->
+                                </div>
+                            </div>
+
+
+
+                            <button class="btn-func btn btn-success" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>
+
+
+                            <div id="div2">
+                                <label id="label2" class="control-label esconder">Ponto de intersecção da curva com o eixo X :</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>
+
+                                <div class="controls">
+                                    <input class="campoTxt form-control esconder" type="text" id="campo2" name="itr_X">
+                                </div>
+
+                                <button class="btn-func btn-info btn esconder" id="botao2"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir2"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div3" class="form-group">
+                                <label id="label3" class="control-label esconder">Ponto de intersecção da curva com o eixo Y :</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder" type="text" id="campo3" name="itr_Y">
+                                    <span class="help-block esconder">Woohoo!</span>
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao3"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir3"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div4" class="form-group">
+                                <label id="label4" class="control-label esconder">Pontos Críticos:</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder"  type="text" id="campo4" name="pontos_criticos">
+                                    <span class="help-block esconder">Woohoo!</span>
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao4"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir4"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div5" class="form-group">
+                                <label id="label5" class="control-label esconder">Máximo da Função:</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder"  type="text" id="campo5" name="maximo">
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao5"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir5"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div6" class="form-group">
+                                <label id="label6" class="control-label esconder">Mínimo da Função:</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder"  type="text" id="campo6" name="minimo">
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao6"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir6"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div7" class="form-group">
+                                <label id="label7" class="control-label esconder">Pontos de Inflexão:</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder"  type="text" id="campo7" name="pontos_de_inflexao">
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao7"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir7"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div8" class="form-group">
+                                <label id="label8" class="control-label esconder">Assíntota Horizontal:</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder"  type="text" id="campo8" name="aH" >
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao8"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir8"> Mostrar resposta </button>
+                            </div>
+
+                            <div id="div9" class="form-group">
+                                <label id="label9" class="control-label esconder">Assíntota Vertical:</label>
+                                <button type="button" class="btnbtn-infobtn-lg esconder" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
+
+                                <div class="'controls">
+                                    <input class="campoTxt form-control esconder"  type="text" id="campo9" name="aV">
+                                </div>
+
+                                 <button class="btn-func btn-info btn esconder" id="botao9"> Enviar </button>
+                                <button class="btn-des btn btn-warning btn-xs esconder" id="desistir9"> Mostrar resposta </button>
+                            </div>
+                        </div>
+
+
+              		</div><!-- Fecha função1 -->
+
+                    
+                </div> <!-- fecha a div funcoes-->
+                
+                    <div class="container">
+                      <div class="modal fade" id="myModal1" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Digitar Função</h4>
+                            </div>
+                                <div class="modal-body">
+                                    <div class="centralizar">Regras de sintaxe para escrita de funções</div>
+
+                                    <p>+&nbsp;&nbsp;&nbsp;soma: 2+x ou 2 + x</p>
+                                    <p>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subtração: 2-x ou 2 - x</p>
+                                    <p>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;multiplicação: 2*x ou x*2</p>
+                                    <p>**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;potenciação: x**2</p>
+                                    <p>()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parêntesis: ((x**2)+4)</p>
+                                        <br>
+
+                                    <div class="centralizar">Trigonometria</div>
+                                    <p>seno &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; sin(x)</p>
+                                    <p>cosseno  &nbsp;&nbsp; cos(x)</p>
+                                    <p>tangente  &nbsp;&nbsp;  tan(x)</p>
+                                    <p>&pi;      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pi</p>
+                                    <p>raíz &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sqrt(x)</p>
+                                    <p>logaritmo  &nbsp;&nbsp;log(x)</p>
+
+                                </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="container">
+                      <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda ponto de intersecção da função com o eixo X </h4>
+                            </div>
+                            <div class="modal-body">
+                              <div class="centralizar">Como calcular:</div>
+
+                                    <p>Para calcular os pontos em que a função toca o eixo x, basta igualar a função a zero.</p>
+                                        <br>
+
+                                    <div class="centralizar">Exemplo:</div>
+                                    <p> f(x) = x+1 </p>
+                                    <p> f(x) =  0  </p>
+                                    <p> x+1 = 0</p>
+                                    <p>  x = -1, assim, o ponto que o a função f(x) = x+1, toca o eixo x é em (-1, 0) </p>
+
+                                </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal3" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda ponto de intersecção da curva com o eixo Y </h4>
+                            </div>
+                            <div class="modal-body">
+
+                                 <p>Para calcular os pontos em que a função toca o eixo y, basta substituir x por 0 na função.</p>
+                                        <br>
+
+                                    <div class="centralizar">Exemplo:</div>
+                                    <p> f(x) = x+1 </p>
+                                    <p> f(0) = 0+1  </p>
+                                    <p> f(0) = 1, assim, o ponto que o a função f(x) = x+1, toca o eixo y é em (0, 1) </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal4" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Pontos críticos </h4>
+                            </div>
+                            <div class="modal-body">
+
+
+
+                                <p>Para calcular os pontos críticos de uma função, deve-se calcular a primeira defivada (f'(x)).</p>
+                                <p>Depois calular o f'(0), então encontrará os pontos críticos da função</p>
+                                        <br>
+
+                                    <div class="centralizar">Exemplo:</div>
+                                    <p> f(x) = x+1 </p>
+                                    <p> f(0) = 0+1  </p>
+                                    <p> f(0) = 1, assim, o ponto que o a função f(x) = x+1, toca o eixo y é em (0, 1) </p>
+
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal5" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Máximo da função</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal6" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Mínimo da função</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal7" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Pontos de inflexão</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal8" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Assíntota Horizonta</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="container">
+                      <div class="modal fade" id="myModal9" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Assíntota Vertical</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+            </div> <!-- fecha a div col-md-3-->
+			
+            
+            <canvas class="col-md-9 dashboard-panel-6 pull-right" id = "resultado">
+            
+             </canvas>  	<!-- fecha a div col-md-9-->					
+				
+		</div>	<!-- fecha row-->
+	
+		<br><br><br>
+		 <div class="panel-footer">Rodapé
+			Copyright 2015 - by Math@Cpt
+			Facebook | Twitter
+		</div> 
+        
+	</div> <!--Fecha o "container-fluid"-->
+
+
+    <div style=" display:none;" class="alert alert-warning alert-dismissible " role="alert" id="alert3">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Resposta incorreta.
+    </div>
+
+
+    <div style=" display:none;" class="alert alert-danger alert-dismissible " role="alert" id="alertErro">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Atenção!</strong> Resposta incorreta.
+    </div>
+
+
+
+</body>
+</html>
+

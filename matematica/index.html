@@ -1,0 +1,344 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset= "UTF-8"/>
+    <title>Math@Cpt</title>
+    
+    <!-- Importes do menu com abas -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estiloMenuAbas.css'%} " />
+
+    <script type="text/javascript" src="{% static 'js/javascriptMenuAbas.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/javascriptMenuAbas.js' %}"></script>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script> <!--ESSE ARQUIVO TEM QUE SER LOCAL!!! -->
+  	<script src="{% static 'js/jquery2.min.js' %}"></script><!--ESSE ARQUIVO TEM QUE SER LOCAL!!! oq eles fazem -->
+    
+    
+	<script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'js/funcoesDominio.js' %}"></script>
+	<script src="{% static 'js/menu.js' %}"></script>
+	<script src="{% static 'js/funcoesEixoX.js' %}"></script>
+	
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"><!--Importando o Boot-->
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fotos.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/CollPersonalizadas.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/media.css' %}"/>
+
+</head>
+
+
+<body>
+
+	<div class="container-fluid">	
+
+		<nav class="navbar navbar-default navbar-fixed-top"> <!--cabeçalho-->
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href = "#">Math@Cpt</a>
+				</div>
+
+			<div id="navbar-main" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="#">Homes</a>
+					</li>
+			
+					<li>
+						<a href="#">Projeto</a>
+					</li>
+					<li>
+						<a href="#">Contato</a>
+					</li>
+
+				</ul>
+
+			</div><!-- navbar-main -->
+			</div><!-- container -->
+		
+		</nav> <!-- Fecha o "navbar navbar-default navbar-fixed-top"-->
+
+		<div class="row">
+
+			<div class="col-md-3" id= "put">
+
+       			<ul class="abas">
+                    <li><a href="#funcao1">Função 1</a></li>
+{#                    <li><a href="#funcao2">Função 2</a></li>#}
+{#                    <li><a href="#funcao3">Função 3</a></li>#}
+                </ul>
+
+                <div id="separa"></div>
+                <div id="funcoes"> <!--conteudo -->
+                    <div id="funcao1">
+                    	<label>Digite a função f(x):</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal1" id="ajuda1">?</button>
+						
+                        <br>
+                        <input class="campoTxt" type="text" id="funcao" name="funcao" placeholder="função" >
+                        <br>
+                
+                        <!--<label id='label'>Digite o domínio da função:</label>-->
+                        <!--<button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal2" id="ajuda2">?</button>-->
+                        <!--<input class="intervalo" type="text" id="intervalo" name="intervalo" placeholder="intervalo" >-->
+                       	<!--<button class="btn-func" id="botaoEnviarFuncao" data-token="{{csrf_token}}" data-url="{% url 'funcao1' %}"> Enviar</button>-->
+                        <!--<br>-->
+                        <!--<br>-->
+                
+                        <label>Ponto de intersecção da curva com o eixo X :</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal3" id="ajuda3">?</button>
+                        <input class="campoTxt" type="text" id="itr_X" name="itr_X" readOnly="true">
+                        <button class="btn-func" id="botao1"> Enviar </button>
+                        <button class="btn-resp" id="resp1"> Mostrar resposta</button>		
+                        <br>
+                        <br>
+                
+                        <label>Ponto de intersecção da curva com o eixo Y:</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal4" id="ajuda4">?</button>
+                        <input class="campoTxt" type="text" id="itr_Y" name="itr_Y" readOnly="true">
+                        <button class="btn-func" id="botao2"> Enviar </button>
+                        <button class="btn-resp" id="resp2"> Mostrar resposta</button>
+                        <br>
+                        <br>
+                
+                        <label>Pontos Críticos:</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal5" id="ajuda5">?</button>
+                        <input class="campoTxt"  type="text" id="pontos_criticos" name="pontos_criticos" readOnly="true">
+                        <button class="btn-func" id="botao3"> Enviar </button>
+                        <button class="btn-resp" id="resp3"> Mostrar resposta</button>
+                        <br>
+                        <br>
+                
+                        <label>Máximo da função:</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal6" id="ajuda6">?</button>
+                        <input class="campoTxt" type="text" id="maximo" name="maximo" readOnly="true">
+                        <button class="btn-func" id="botao4"> Enviar </button>
+                        <button class="btn-resp" id="resp4"> Mostrar resposta</button>		
+                        <br>
+                        <br>
+                        
+                        <label>Mínimo da função:</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal7" id="ajuda7">?</button>
+                        <input class="campoTxt" type="text" id="minimo" name="minimo" readOnly="true">
+                        <button class="btn-func" id="botao5"> Enviar </button>
+                        <button class="btn-resp" id="resp5"> Mostrar resposta</button>		
+                        <br>
+                        <br>
+                
+                        <label>Pontos de inflexão:</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal8" id="ajuda8">?</button>
+                        <input class="campoTxt" type="text" id="pontos_de_inflexao" name="pontos_de_inflexao" pattern="[A-Za-z0-9]{6}" title="Promo codes consist of 6 alphanumeric characters." readOnly="true">
+                        <button class="btn-func" id="botao6"> Enviar </button>
+                        <button class="btn-resp" id="resp6"> Mostrar resposta</button>		
+                        <br>
+                        <br>   
+                         
+                        <label>Determine a concavidade:</label>
+                        <button type="button" class="btnbtn-infobtn-lg" data-toggle="modal" data-target="#myModal9" id="ajuda9">?</button>
+                        <input class="campoTxt" type="text" id="concavidade" name="concavidade" readOnly="true">
+                        <button class="btn-func" id="botao7"> Enviar </button>
+                        <button class="btn-resp" id="resp7"> Mostrar resposta</button>
+                        	
+              		</div><!-- Fecha função1 -->
+
+                    
+                </div> <!-- fecha a div funcoes-->
+                
+                <div class="container">
+                      <div class="modal fade" id="myModal1" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Digitar Função</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Uma função pode ser expressa da seguinte maneira:</p>
+                              f(x) = dsgfg
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Domínio da Função</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>O Domínio de uma função é o conjunto dos números 
+                              que a função não pode assumir, pois se a função assumir,
+                              sua condição de existência poderá ser afetada.</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal3" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Ponto de intersecção da curva com o eixo X </h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal4" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Ponto de intersecção da curva com o eixo Y </h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal5" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Pontos críticos </h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal6" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Máximo da função</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal7" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Mínimo da função</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal8" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Pontos de inflexão</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="container">
+                      <div class="modal fade" id="myModal9" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajuda Determine a concavidade</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>digitar algo</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+            
+            </div> <!-- fecha a div col-md-3-->
+			
+            
+            <canvas class="col-md-9 dashboard-panel-6 pull-right" id = "resultado">
+            
+             </canvas>  	<!-- fecha a div col-md-9-->					
+				
+		</div>	<!-- fecha row-->
+	
+		<br><br><br>
+		 <div class="panel-footer">Rodapé
+			Copyright 2015 - by Math@Cpt
+			Facebook | Twitter
+		</div> 
+        
+	</div> <!--Fecha o "container-fluid"-->
+</body>
+</html>
